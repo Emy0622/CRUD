@@ -36,6 +36,19 @@ async function deletarUsuario(id) {
 
 }
 
+async function atualizarUsuario(usuario) {
+    const url = `http://10.107.140.2:8080/usuarios/${usuario.id}`
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(usuario)
+    }
+    const response = await fetch(url, options)
+    console.log(response.ok)
+    return response.ok
+}
 //Para teste
 
 // const novoUsuario = {
@@ -44,6 +57,13 @@ async function deletarUsuario(id) {
 // }
 // cadastrarUsuario(novoUsuario)
 
+const usuarioAtualizada = {
+    id: '24',
+    nome: 'Yasmin atualizado',
+    email: 'myntargino@gmail.com'
+
+}
+atualizarUsuario(usuarioAtualizada)
 deletarUsuario(17)
 cadastrarUsuario()
 listarUsuarios()
